@@ -1,0 +1,55 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+.page {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 15px;
+}
+
+.page__body {
+    margin: 0;
+    text-align: center;
+    color: #000000;
+    background: #E5E5E5;
+}
+
+.app {
+    width: 695px;
+    background: #FFFFFF;
+    margin: 100px auto;
+}
+
+.page-main {
+    display: flex;
+    gap: 56px;
+    justify-content: center;
+}
+
+.constructor-field {
+    width: 243px;
+    height: 448px;
+    box-sizing: border-box;
+    border: 2px dashed #C4C4C4;
+    border-radius: 6px;
+    margin-top: 30px;
+
+}
+
+.vehicle-card {
+    margin-bottom: 15px;
+}
+
+.vehicle-card img {
+    width: 250px;
+    margin-left: auto;
+}
+
+.vehicle-card__about ul {
+    list-style: none;
+}
