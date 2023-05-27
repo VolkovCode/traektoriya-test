@@ -53,3 +53,7 @@
 .vehicle-card__about ul {
     list-style: none;
 }
+
+.leaflet-container {
+    height: 360px;
+}

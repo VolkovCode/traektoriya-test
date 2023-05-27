@@ -1,10 +1,10 @@
-import {useAppDispatch} from "../../../../hooks/useAppDispatch";
-import {useSelector} from "react-redux";
-import {getVehiclesData} from "../../model/selectors/postsSelectors";
-import {useEffect} from "react";
-import {fetchVehicleList} from "../../model/services/fetchVehicleList/fetchVehicleList";
-import {VehicleListItem} from "../VenicleListItem/VenicleListItem";
-import {vehicleActions} from "../../model/slices/vehicleSlice";
+import { useAppDispatch } from "../../../../hooks/useAppDispatch";
+import { useSelector } from "react-redux";
+import { getVehiclesData } from "../../model/selectors/vehicleSelectors";
+import { useEffect } from "react";
+import { fetchVehicleList } from "../../model/services/fetchVehicleList/fetchVehicleList";
+import { VehicleListItem } from "../VenicleListItem/VenicleListItem";
+import { vehicleActions } from "../../model/slices/vehicleSlice";
 
 export const VehicleList = () => {
     const dispatch = useAppDispatch();
@@ -28,9 +28,8 @@ export const VehicleList = () => {
                 <option value="year asc">По году выпуска, по возрастанию</option>
             </select>
             <div>
-                {vehicles?.map((vehicle) => (<VehicleListItem key={vehicle.id} vehicle={vehicle} />) )}
+                {vehicles?.map((vehicle) => (<VehicleListItem key={vehicle.id} vehicle={vehicle} />))}
             </div>
         </div>
-
     )
 }

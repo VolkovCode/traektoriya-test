@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 import { VehicleSchema } from "../../../../store/types/VehicleSchema";
 import { fetchVehicleList } from "../services/fetchVehicleList/fetchVehicleList";
 import { Vehicle } from "../types/vehicle";
@@ -17,21 +16,32 @@ const vehicleSlice = createSlice({
     setVehiclesSortParams: (state: VehicleSchema, action: PayloadAction<string>) => {
       const sortName = action.payload.split(' ')[0] // по какому полю сортировка цена / год выпуска
       const order = action.payload.split(' ')[1] // направление сортировки asc / desc
-      console.log(sortName, order)
       if (sortName === 'price') {
           if (order === 'desc') {
-            state.vehicles = state.vehicles?.sort((prevVehicle, nextVehicle) => nextVehicle.price - prevVehicle.price);
+            state.vehicles = state.vehicles.sort((prevVehicle, nextVehicle) => nextVehicle.price - prevVehicle.price);
           } else {
-            state.vehicles = state.vehicles?.sort((prevVehicle, nextVehicle) => prevVehicle.price - nextVehicle.price);
+            state.vehicles = state.vehicles.sort((prevVehicle, nextVehicle) => prevVehicle.price - nextVehicle.price);
           }
       } else if (sortName === 'year') {
         if (order === 'desc') {
-          state.vehicles = state.vehicles?.sort((prevVehicle, nextVehicle) => nextVehicle.year - prevVehicle.year);
+          state.vehicles = state.vehicles.sort((prevVehicle, nextVehicle) => nextVehicle.year - prevVehicle.year);
         } else {
-          state.vehicles = state.vehicles?.sort((prevVehicle, nextVehicle) => prevVehicle.year - nextVehicle.year);
+          state.vehicles = state.vehicles.sort((prevVehicle, nextVehicle) => prevVehicle.year - nextVehicle.year);
         }
       }
     },
+    updateVehicleCard: (state: VehicleSchema, action: PayloadAction<Vehicle>) => {
+      state.vehicles = state.vehicles.map((vehicle) => {
+            if (vehicle.id === action.payload.id) {
+              vehicle = {
+                ...vehicle,
+                ...action.payload
+              }
+            }
+            return vehicle
+          }
+      )
+    }
   },
   extraReducers: (builder) => {
     builder
