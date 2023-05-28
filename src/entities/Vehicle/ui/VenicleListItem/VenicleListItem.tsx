@@ -32,6 +32,10 @@ export const VehicleListItem = (props: VehicleListItemProps) => {
         setIsEdit(false)
     }
 
+    const onDeleteHandler = (id) => {
+        dispatch(vehicleActions.deleteVehicleCard(id))
+    }
+
     return (
         <div className='vehicle-card'>
             <div className='vehicle-card__about'>
@@ -49,6 +53,7 @@ export const VehicleListItem = (props: VehicleListItemProps) => {
                 ? <button onClick={() => onSaveHandler(vehicle.id)} type='button'>Сохранить</button>
                 : <button onClick={() => onEditHandler()} type='button'>Редактировать</button>
             }
+            <button onClick={() => onDeleteHandler(vehicle.id)}>Удалить</button>
             <hr />
         </div>
     )

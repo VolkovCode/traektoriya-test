@@ -41,7 +41,15 @@ const vehicleSlice = createSlice({
             return vehicle
           }
       )
-    }
+    },
+    deleteVehicleCard: (state: VehicleSchema, action: PayloadAction<number>) => {
+      state.vehicles = state.vehicles.filter((vehicle) => {
+            if (vehicle.id !== action.payload) {
+                return vehicle
+            }
+        }
+      )
+    },
   },
   extraReducers: (builder) => {
     builder
